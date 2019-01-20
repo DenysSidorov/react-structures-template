@@ -150,7 +150,7 @@ class ZiPCodeComponent extends React.Component {
                   className="zipCodeCont_body_list_search"
                 />
                 <img
-                  src="https://i.postimg.cc/C556mTVm/search-Black.png"
+                  src="/static-files/search-Black.png"
                   className="zipCodeCont_body_list_search_img"
                 />
               </div>

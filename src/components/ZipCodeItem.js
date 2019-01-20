@@ -12,7 +12,7 @@ const ZipCodeItem = ({el, currentItem, selectItem}) => (
     <div className="zipCodeCont_body_list_item_logo">
       <img
         alt=""
-        src="https://i.postimg.cc/Fs2ngBCV/help-Circle.png"
+        src="/static-files/help-Circle.png"
         className="zipCodeCont_body_list_item_logo_img"
       />
     </div>

@@ -17,7 +17,6 @@ module.exports = {
   "plugins": [
     "react",
     "prettier",
-    // ["@babel/plugin-proposal-class-properties"]
   ],
   "env": {
     "es6": true,
