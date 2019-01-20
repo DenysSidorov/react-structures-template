@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run prettier && npm run eslint --fix src/**/*.js && webpack-dev-server --config ./webpack.config.js --mode development",
+    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "start-strict": "npm run prettier && npm run eslint --fix src/**/*.js && webpack-dev-server --config ./webpack.config.js --mode development",
     "eslint": "eslint src/**/*.js",
     "eslint-fix": "eslint src/**/*.js --fix",
     "prettier": "prettier --write src/**/*.js",
