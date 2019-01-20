@@ -41,6 +41,13 @@ class ZiPCodeComponent extends React.Component {
     }
   };
 
+  removeItem = (ev, el) => {
+    ev.stopPropagation();
+    this.setState((prevState /* props */) => ({
+      zipCodeItems: prevState.zipCodeItems.filter(item => el._id !== item._id),
+    }));
+  };
+
   selectItem = replyItem => {
     // check item, selected or not
     const isAlreadySelected = this.state.currentItem['post code'] === replyItem['post code'];
@@ -177,6 +184,7 @@ class ZiPCodeComponent extends React.Component {
                         el={el}
                         currentItem={currentItem}
                         selectItem={this.selectItem}
+                        removeItem={this.removeItem}
                       />
                     ))
                   : null}

@@ -122,30 +122,46 @@ body {
           padding: 5px 2px;
           border-radius: 4px;
           transition: all ease 0.2s;
+          justify-content: space-between;
           &:hover {
             background-color: #44e081;
           }
           &:last-of-type {
             border: none !important;
           }
-          .zipCodeCont_body_list_item_logo {
+          .itemLeft{
             display: flex;
-            justify-content: center;
             align-items: center;
-            flex-shrink: 0;
-            margin-right: 8px;
-            img {
-              border-radius: 6px;
-              width: 30px;
-              height: 30px;
+            .zipCodeCont_body_list_item_logo {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-shrink: 0;
+              margin-right: 8px;
+              img {
+                border-radius: 6px;
+                width: 30px;
+                height: 30px;
+              }
+            }
+            .zipCodeCont_body_list_item_text {
+              span {
+                color: #2C3642;
+                font-family: "Helvetica Neue", Helvetica;
+                font-size: 12px;
+                font-weight: bold;
+              }
             }
           }
-          .zipCodeCont_body_list_item_text {
-            span {
-              color: #2C3642;
-              font-family: "Helvetica Neue", Helvetica;
-              font-size: 12px;
-              font-weight: bold;
+          .itemRemove{
+            color: #c73827;
+            font-family: "Helvetica Neue", Helvetica;
+            font-size: 12px;
+            margin-right: 5px;
+            font-weight: bold;
+            &:hover{
+              cursor: pointer;
+              text-decoration: underline;
             }
           }
         }
