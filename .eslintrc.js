@@ -14,16 +14,30 @@ module.exports = {
       arrowFunction: true
     }
   },
-  "plugins": ["react", "prettier"],
+  "plugins": [
+    "react",
+    "prettier",
+    // ["@babel/plugin-proposal-class-properties"]
+  ],
   "env": {
     "es6": true,
     "browser": true,
     "node": true,
   },
-  "rules":{
-    "react/jsx-filename-extension": [WARN, { "extensions": [".js", ".jsx"] }],
+  "rules": {
+    // REACT RULES
+    "react/jsx-filename-extension": [WARN, {"extensions": [".js", ".jsx"]}],
     "react/jsx-indent": [OFF],
-    "prettier/prettier": "error",
-    "no-console": OFF
+    "react/forbid-prop-types": OFF,
+    "react/jsx-one-expression-per-line": OFF,
+    // JS RULES
+    "import/prefer-default-export": OFF,
+    "no-console": OFF,
+    "no-underscore-dangle": OFF,
+    "jsx-a11y/no-static-element-interactions": OFF,
+    "jsx-a11y/click-events-have-key-events": OFF,
+    "jsx-a11y/alt-text": OFF,
+    // TOOLS RULES
+    "prettier/prettier": "error"
   }
 };

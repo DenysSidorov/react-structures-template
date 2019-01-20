@@ -3,5 +3,8 @@
     "@babel/preset-env",
     "@babel/preset-react"
   ],
-  "plugins": ["transform-regenerator"]
+  "plugins": [
+    "transform-regenerator",
+    ["@babel/plugin-proposal-class-properties", { "loose": true }]
+  ]
 }
