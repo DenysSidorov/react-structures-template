@@ -108,7 +108,7 @@ class ZiPCodeComponent extends React.Component {
         }
 
         // if application has correct response
-        if (result.status === '200') {
+        if (result.status === 200) {
           this.setState({
             isFetching: false,
             searchValue: '',
