@@ -2,6 +2,7 @@
 import React from 'react';
 import axios from 'axios';
 import ZipCodeItem from './ZipCodeItem';
+import SearchArea from './SearchArea';
 import Preloader from './Preloader';
 import {generateUniqueId} from '../helpers/index';
 import '../styles/index.scss';
@@ -162,22 +163,11 @@ class ZiPCodeComponent extends React.Component {
               {this.state.searchError.length ? <span>{this.state.searchError}</span> : null}
             </div>
             <div className="zipCodeCont_body_list_search_container_wrapper">
-              <div className="zipCodeCont_body_list_search_container">
-                <input
-                  type="text"
-                  placeholder="Search by zip code..."
-                  onChange={e => {
-                    this.handleChangeSearch(e);
-                  }}
-                  onKeyPress={this.searchHandlerEnter}
-                  value={this.state.searchValue}
-                  className="zipCodeCont_body_list_search"
-                />
-                <img
-                  src="/static-files/search-Black.png"
-                  className="zipCodeCont_body_list_search_img"
-                />
-              </div>
+              <SearchArea
+                searchValue={this.state.searchValue}
+                handleChangeSearch={this.handleChangeSearch}
+                searchHandlerEnter={this.searchHandlerEnter}
+              />
               <div
                 className="zipCodeCont_body_list_search_container_wrapper_btn"
                 onClick={this.searchHandler}
