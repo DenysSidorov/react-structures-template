@@ -93,43 +93,45 @@ class ZiPCodeComponent extends React.Component {
           url: `https://api.zippopotam.us/us/${searchValue}`,
         });
 
-        const isPostCodeExists = zipCodeItems.some(
-          el => el['post code'] === result.data['post code'],
-        );
-
-        let newData = [].concat([], zipCodeItems);
-        // create or change exists item
-        if (!isPostCodeExists) {
-          if (!currentItem._id) {
-            // create new item
-            newData = [].concat(zipCodeItems, {...result.data, _id: generateUniqueId()});
-          } else {
-            // update exists item
-            newData = zipCodeItems.map(el =>
-              el._id === currentItem._id ? {...result.data, _id: currentItem._id} : el,
-            );
-          }
-        }
-
-        // generate error text for user
-        let searchError = '';
-        if (isPostCodeExists) {
-          searchError = 'Post code already exists';
-        }
-
         // if application has correct response
         if (result.status === 200) {
+          const isPostCodeExists = zipCodeItems.some(
+            el => el['post code'] === result.data['post code'],
+          );
+
+          let newData = [].concat([], zipCodeItems);
+          // create or change exists item
+          if (!isPostCodeExists) {
+            if (!currentItem._id) {
+              // create new item
+              newData = [].concat(zipCodeItems, {...result.data, _id: generateUniqueId()});
+            } else {
+              // update exists item
+              newData = zipCodeItems.map(el =>
+                el._id === currentItem._id ? {...result.data, _id: currentItem._id} : el,
+              );
+            }
+          }
+
+          // generate error text for user
+          let searchError = '';
+          if (isPostCodeExists) {
+            searchError = 'Post code already exists';
+          }
+
           this.setState({
             isFetching: false,
             searchValue: '',
             searchError,
             zipCodeItems: newData,
           });
+        } else {
+          this.setState({isFetching: false, searchError: 'Something wrong with connection!'});
         }
       } catch (er) {
         console.log(er.response || er);
         let searchError = '';
-        if (er.response.data['post code'] === undefined) {
+        if (er.response && er.response.data && er.response.data['post code'] === undefined) {
           searchError = "Post code wasn't found";
         }
         this.setState({isFetching: false, searchError});
