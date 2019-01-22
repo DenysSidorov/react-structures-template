@@ -4,6 +4,7 @@ import axios from 'axios';
 import ZipCodeItem from './ZipCodeItem';
 import SearchArea from './SearchArea';
 import Preloader from './Preloader';
+import cities from '../api/mocks/cities';
 import {generateUniqueId} from '../helpers/index';
 import '../styles/index.scss';
 
@@ -13,24 +14,7 @@ class ZiPCodeComponent extends React.Component {
     searchValue: '',
     searchError: '',
     isFetching: false,
-    zipCodeItems: [
-      {
-        _id: 'JR55AMG86VXEI',
-        country: 'United States',
-        'country abbreviation': 'US',
-        places: [
-          {
-            latitude: '33.9731',
-            longitude: '-118.2479',
-            'place name': 'Los Angeles',
-            state: 'California',
-            'state abbreviation': 'CA',
-            'post code': '90001',
-          },
-        ],
-        'post code': '90001',
-      },
-    ],
+    zipCodeItems: cities,
   };
 
   // input handler
@@ -63,6 +47,7 @@ class ZiPCodeComponent extends React.Component {
     ev.stopPropagation();
     this.setState((prevState /* props */) => ({
       zipCodeItems: prevState.zipCodeItems.filter(item => el._id !== item._id),
+      currentItem: {},
     }));
   };
 
