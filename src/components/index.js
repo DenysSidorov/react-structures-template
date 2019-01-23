@@ -1,5 +1,5 @@
 /* eslint-disable react/destructuring-assignment */
-import React from 'react';
+import React, {PureComponent} from 'react';
 import axios from 'axios';
 import ZipCodeItem from './ZipCodeItem';
 import SearchArea from './SearchArea';
