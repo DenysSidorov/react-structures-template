@@ -1,5 +1,9 @@
+const translations = Symbol('translations');
+const langArr = Symbol('langArr');
+const currentLang = Symbol('currentLang');
+
 class LangState {
-  translations = {
+  [translations] = {
     ru: {
       Remove: 'Удалить',
       dateTime: 'MMMM HH:mm',
@@ -18,18 +22,24 @@ class LangState {
     },
   };
 
-  langArr = ['en', 'ru'];
+  // langState.translations[`${langState.getCurrentLang()}`].Remove
+  [langArr] = ['en', 'ru'];
 
-  currentLang = 'en';
+  [currentLang] = 'en';
+
+  translate = word => {
+    console.log(word);
+    console.log(this[translations]);
+  };
 
   getCurrentLang = () => {
     console.log('====', this);
-    return this.currentLang;
+    return this[currentLang];
   };
 
   setCurrentLang = lang => {
-    if (this.langArr.indexOf(lang) !== 0) {
-      this.currentLang = lang;
+    if (this[langArr].indexOf(lang) !== 0) {
+      this[currentLang] = lang;
     } else {
       throw Error("Can't find this language!");
     }

@@ -34,7 +34,7 @@ const ZipCodeItem = ({el, currentItem, selectItem, removeItem, langState}) => {
           removeItem(e, el);
         }}
       >
-        {langState.translations[`${langState.getCurrentLang()}`].Remove}
+        {langState.translate('Remove')}
       </div>
     </div>
   );
