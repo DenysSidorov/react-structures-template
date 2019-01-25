@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {translations} from '../config/lang';
 
+console.log(translations.en);
 const ZipCodeItem = ({el, currentItem, selectItem, removeItem}) => (
   <div
     className="zipCodeCont_body_list_item"

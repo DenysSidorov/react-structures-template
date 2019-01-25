@@ -24,6 +24,8 @@ module.exports = {
     "node": true,
   },
   "rules": {
+    // TOOLS RULES
+    "prettier/prettier": "error",
     // REACT RULES
     "react/jsx-filename-extension": [WARN, {"extensions": [".js", ".jsx"]}],
     "react/jsx-indent": [OFF],
@@ -36,7 +38,5 @@ module.exports = {
     "jsx-a11y/no-static-element-interactions": OFF,
     "jsx-a11y/click-events-have-key-events": OFF,
     "jsx-a11y/alt-text": OFF,
-    // TOOLS RULES
-    "prettier/prettier": "error"
   }
 };
