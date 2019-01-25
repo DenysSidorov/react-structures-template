@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 
 module.exports = {
-  entry: ['babel-polyfill', './src/lang.js'],
+  entry: ['babel-polyfill', './src/index.js'],
   output: {
     path: `${__dirname}/www`,
     publicPath: '/',

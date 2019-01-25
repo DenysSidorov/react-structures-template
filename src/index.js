@@ -8,7 +8,7 @@ import LangState from './config/lang';
 import {LangProvider} from './contexts/lang';
 
 const container = document.getElementById('app');
-
+console.log(container, 12);
 if (container) {
   ReactDOM.render(
     <LangProvider value={LangState}>

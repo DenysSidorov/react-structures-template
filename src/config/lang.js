@@ -22,7 +22,6 @@ class LangState {
     },
   };
 
-  // langState.translations[`${langState.getCurrentLang()}`].Remove
   [langArr] = ['en', 'ru'];
 
   [currentLang] = 'en';

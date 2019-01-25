@@ -27,6 +27,7 @@ module.exports = {
     // TOOLS RULES
     "prettier/prettier": "error",
     // REACT RULES
+    "jsx-a11y/no-noninteractive-element-interactions": OFF,
     "react/jsx-filename-extension": [WARN, {"extensions": [".js", ".jsx"]}],
     "react/jsx-indent": [OFF],
     "react/forbid-prop-types": OFF,

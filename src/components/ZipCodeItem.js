@@ -4,7 +4,6 @@ import {LangConsumer} from '../contexts/lang';
 // import langState from '../config/lang';
 
 const ZipCodeItem = ({el, currentItem, selectItem, removeItem, langState}) => {
-  console.log('----', langState);
   return (
     <div
       className="zipCodeCont_body_list_item"
@@ -43,9 +42,7 @@ const ZipCodeItem = ({el, currentItem, selectItem, removeItem, langState}) => {
 const wrapper = props => (
   <LangConsumer>{langState => <ZipCodeItem langState={langState} {...props} />}</LangConsumer>
 );
-// const wrapper = props => <ZipCodeItem langState={{}} {...props} />;
 
-console.log(wrapper);
 export default wrapper;
 
 ZipCodeItem.propTypes = {
