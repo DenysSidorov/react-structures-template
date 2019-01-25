@@ -14,3 +14,16 @@ export const translations = {
     'Not Done': 'Not Done',
   },
 };
+
+const langArr = ['en', 'ru'];
+let currentLang = 'en';
+
+export const getCurrentLang = () => currentLang;
+
+export const setCurrentLang = lang => {
+  if (langArr.indexOf(lang) !== 0) {
+    currentLang = lang;
+  } else {
+    throw Error("Can't find this language!");
+  }
+};
