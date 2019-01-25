@@ -3,17 +3,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/index';
 
-// import langs from './config/lang';
+import langState from './config/lang';
 
-import LangContext from './contexts/lang';
+import {LangProvider} from './contexts/lang';
 
 const container = document.getElementById('app');
 
 if (container) {
   ReactDOM.render(
-    <LangContext.Provider>
+    <LangProvider value={langState}>
       <App />
-    </LangContext.Provider>,
+    </LangProvider>,
     container,
   );
 }
