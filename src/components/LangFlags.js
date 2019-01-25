@@ -6,12 +6,12 @@ const LangFlags = () => (
     <img
       className="langContFags"
       src="/static-files/rus-flag.png"
-      onClick={LangState.setCurrentLang('ru')}
+      onClick={() => LangState.setCurrentLang('ru')}
     />
     <img
       className="langContFags"
       src="/static-files/uk-flag.png"
-      onClick={LangState.setCurrentLang('en')}
+      onClick={() => LangState.setCurrentLang('en')}
     />
   </div>
 );

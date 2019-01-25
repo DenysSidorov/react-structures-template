@@ -1,6 +1,6 @@
 const translations = Symbol('translations');
 const langArr = Symbol('langArr');
-const currentLang = Symbol('currentLang');
+// const currentLang = Symbol('currentLang');
 
 class LangState {
   [translations] = {
@@ -24,15 +24,15 @@ class LangState {
 
   [langArr] = ['en', 'ru'];
 
-  [currentLang] = 'en';
+  currentLang = 'en';
 
   translate = word => this[translations][this.getCurrentLang()][`${word}`];
 
-  getCurrentLang = () => this[currentLang];
+  getCurrentLang = () => this.currentLang;
 
   setCurrentLang = lang => {
-    if (this[langArr].indexOf(lang) !== 0) {
-      this[currentLang] = lang;
+    if (this[langArr].indexOf(lang) !== -1) {
+      this.currentLang = lang;
     } else {
       throw Error("Can't find this language!");
     }

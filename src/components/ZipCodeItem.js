@@ -4,6 +4,7 @@ import {LangConsumer} from '../contexts/lang';
 // import langState from '../config/lang';
 
 const ZipCodeItem = ({el, currentItem, selectItem, removeItem, langState}) => {
+  console.log('');
   return (
     <div
       className="zipCodeCont_body_list_item"
