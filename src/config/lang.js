@@ -27,15 +27,9 @@ class LangState {
 
   [currentLang] = 'en';
 
-  translate = word => {
-    console.log(word);
-    console.log(this[translations]);
-  };
+  translate = word => this[translations][this.getCurrentLang()][`${word}`];
 
-  getCurrentLang = () => {
-    console.log('====', this);
-    return this[currentLang];
-  };
+  getCurrentLang = () => this[currentLang];
 
   setCurrentLang = lang => {
     if (this[langArr].indexOf(lang) !== 0) {
