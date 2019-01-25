@@ -1,9 +1,10 @@
 /* eslint-disable react/destructuring-assignment */
-import React, {PureComponent} from 'react';
+import React, {Fragment} from 'react';
 import axios from 'axios';
 import ZipCodeItem from './ZipCodeItem';
 import SearchArea from './SearchArea';
 import Preloader from './Preloader';
+import LangFlags from './LangFlags';
 import cities from '../api/mocks/cities';
 import {generateUniqueId} from '../helpers/index';
 import '../styles/index.scss';
@@ -143,50 +144,53 @@ class ZiPCodeComponent extends React.Component {
     const {zipCodeItems, currentItem} = this.state;
 
     return (
-      <div className="zipCodeCont">
-        <div className="zipCodeCont_body">
-          <div className="zipCodeCont_body_list">
-            <div className="zipCodeCont_body_list_searchErrors">
-              {this.state.searchError.length ? <span>{this.state.searchError}</span> : null}
-            </div>
-            <div className="zipCodeCont_body_list_search_container_wrapper">
-              <SearchArea
-                searchValue={this.state.searchValue}
-                handleChangeSearch={this.handleChangeSearch}
-                searchHandlerEnter={this.searchHandlerEnter}
-              />
-              <div
-                className="zipCodeCont_body_list_search_container_wrapper_btn"
-                onClick={this.searchHandler}
-              >
-                <span>Go</span>
+      <Fragment>
+        <LangFlags />
+        <div className="zipCodeCont">
+          <div className="zipCodeCont_body">
+            <div className="zipCodeCont_body_list">
+              <div className="zipCodeCont_body_list_searchErrors">
+                {this.state.searchError.length ? <span>{this.state.searchError}</span> : null}
               </div>
-            </div>
-
-            {(zipCodeItems && zipCodeItems.length) || this.state.isFetching ? (
-              <div className="zipCodeCont_body_list_items_container scrollStylesRD">
-                {this.state.isFetching ? (
-                  <div className="zipCodeCont_body_list_items_container_preloader">
-                    <Preloader height="24px" />
-                  </div>
-                ) : null}
-
-                {zipCodeItems && zipCodeItems.length
-                  ? zipCodeItems.map(el => (
-                      <ZipCodeItem
-                        key={el['post code']}
-                        el={el}
-                        currentItem={currentItem}
-                        selectItem={this.selectItem}
-                        removeItem={this.removeItem}
-                      />
-                    ))
-                  : null}
+              <div className="zipCodeCont_body_list_search_container_wrapper">
+                <SearchArea
+                  searchValue={this.state.searchValue}
+                  handleChangeSearch={this.handleChangeSearch}
+                  searchHandlerEnter={this.searchHandlerEnter}
+                />
+                <div
+                  className="zipCodeCont_body_list_search_container_wrapper_btn"
+                  onClick={this.searchHandler}
+                >
+                  <span>Go</span>
+                </div>
               </div>
-            ) : null}
+
+              {(zipCodeItems && zipCodeItems.length) || this.state.isFetching ? (
+                <div className="zipCodeCont_body_list_items_container scrollStylesRD">
+                  {this.state.isFetching ? (
+                    <div className="zipCodeCont_body_list_items_container_preloader">
+                      <Preloader height="24px" />
+                    </div>
+                  ) : null}
+
+                  {zipCodeItems && zipCodeItems.length
+                    ? zipCodeItems.map(el => (
+                        <ZipCodeItem
+                          key={el['post code']}
+                          el={el}
+                          currentItem={currentItem}
+                          selectItem={this.selectItem}
+                          removeItem={this.removeItem}
+                        />
+                      ))
+                    : null}
+                </div>
+              ) : null}
+            </div>
           </div>
         </div>
-      </div>
+      </Fragment>
     );
   }
 }

@@ -3,6 +3,13 @@ body {
   background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(224, 221, 224, 1) 47%, rgba(184, 184, 184, 1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#b8b8b8', GradientType=1);
 }
+
+.langContainer{
+  height: 30px;
+  img{
+    height: 35px;
+  }
+}
 .zipCodeCont {
   display: flex;
   justify-content: center;
@@ -15,6 +22,9 @@ body {
     display: flex;
     width: 40%;
     min-width: 320px;
+    @media screen and (max-width: 1024px) {
+      width: 100%;
+    }
     .zipCodeCont_body_list {
       width: 100%;
       margin-right: 20px;
@@ -129,7 +139,7 @@ body {
           &:last-of-type {
             border: none !important;
           }
-          .itemLeft{
+          .itemLeft {
             display: flex;
             align-items: center;
             .zipCodeCont_body_list_item_logo {
@@ -153,13 +163,13 @@ body {
               }
             }
           }
-          .itemRemove{
+          .itemRemove {
             color: #c73827;
             font-family: "Helvetica Neue", Helvetica;
             font-size: 12px;
             margin-right: 5px;
             font-weight: bold;
-            &:hover{
+            &:hover {
               cursor: pointer;
               text-decoration: underline;
             }
