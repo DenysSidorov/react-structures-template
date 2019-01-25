@@ -5,16 +5,19 @@ body {
 }
 
 .langContainer{
-  height: 30px;
+  display: flex;
+  align-items: center;
   img{
     height: 35px;
+    margin-right: 10px;
+    cursor: pointer;
   }
 }
 .zipCodeCont {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: calc(100vh - 51px);
   //width: 100vw;
   .zipCodeCont_body {
     padding: 20px;
