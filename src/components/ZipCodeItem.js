@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {LangConsumer} from '../contexts/lang';
 // import langState from '../config/lang';
 
-const ZipCodeItem = ({el, currentItem, selectItem, removeItem, langState}) => (
+const ZipCodeItem = ({el, currentItem, selectItem, removeItem, translate}) => (
   <div
     className="zipCodeCont_body_list_item"
     onClick={() => {
@@ -32,19 +32,19 @@ const ZipCodeItem = ({el, currentItem, selectItem, removeItem, langState}) => (
         removeItem(e, el);
       }}
     >
-      {langState.translate('Remove')}
+      {translate('Remove')}
     </div>
   </div>
 );
 
 const wrapper = props => (
-  <LangConsumer>{langState => <ZipCodeItem langState={langState} {...props} />}</LangConsumer>
+  <LangConsumer>{({translate}) => <ZipCodeItem translate={translate} {...props} />}</LangConsumer>
 );
 
 export default wrapper;
 
 ZipCodeItem.propTypes = {
-  langState: PropTypes.object,
+  translate: PropTypes.func,
   el: PropTypes.object,
   currentItem: PropTypes.object,
   selectItem: PropTypes.func,
@@ -52,7 +52,7 @@ ZipCodeItem.propTypes = {
 };
 
 ZipCodeItem.defaultProps = {
-  langState: {},
+  translate: () => {},
   el: {},
   currentItem: {},
   selectItem: () => {},
