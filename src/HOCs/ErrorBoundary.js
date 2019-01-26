@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function logErrorToMyService(err, inf) {
-  console.log('logErrorToMyService Err - ', err);
-  console.log('logErrorToMyService Inf - ', inf);
+  console.log('logErrorToMyService Err - ', JSON.stringify(err), err);
+  console.log('logErrorToMyService Inf - ', JSON.stringify(inf));
 }
 
 class ErrorBoundary extends React.Component {

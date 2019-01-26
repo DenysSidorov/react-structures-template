@@ -22,12 +22,18 @@ export default LangFlags;
 class ErrorCapturer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {error: null};
+    this.state = {error: {error: {value: false}}};
   }
 
   onClick = () => {
+    console.log(12);
+    setTimeout(() => {
+      this.setState({error: '12'}, () => {
+        console.log('after');
+      });
+    }, 6000);
     // try {
-    throw Error('lol');
+    // throw Error('lol');
     // Выполните что-то, что выбросит ошибку
     // } catch (error) {
     // this.setState({error: Error('lolo')});
@@ -36,7 +42,8 @@ class ErrorCapturer extends React.Component {
 
   render() {
     const {error} = this.state;
-    if (error) {
+    console.log(error, 'errr');
+    if (error.error.value) {
       return <h1>Ошибка перехвачена!.</h1>;
     }
     return <div onClick={this.onClick}>Нажать</div>;
