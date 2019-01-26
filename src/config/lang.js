@@ -27,7 +27,8 @@ const langState = {
   currentLang: 'en',
 
   translate(word) {
-    return langState.translations[langState.getCurrentLang()][`${word}`];
+    const res = this.translations[this.getCurrentLang()][`${word}`];
+    return res;
   },
 
   getCurrentLang() {
