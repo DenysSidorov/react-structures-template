@@ -13,7 +13,32 @@ const LangFlags = () => (
       src="/static-files/uk-flag.png"
       onClick={() => LangState.setCurrentLang('en')}
     />
+    <ErrorCapturer />
   </div>
 );
 
 export default LangFlags;
+
+class ErrorCapturer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {error: null};
+  }
+
+  onClick = () => {
+    // try {
+    throw Error('lol');
+    // Выполните что-то, что выбросит ошибку
+    // } catch (error) {
+    // this.setState({error: Error('lolo')});
+    // }
+  };
+
+  render() {
+    const {error} = this.state;
+    if (error) {
+      return <h1>Ошибка перехвачена!.</h1>;
+    }
+    return <div onClick={this.onClick}>Нажать</div>;
+  }
+}
