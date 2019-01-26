@@ -8,6 +8,7 @@ import LangFlags from './LangFlags';
 import cities from '../api/mocks/cities';
 import {generateUniqueId} from '../helpers/index';
 import '../styles/index.scss';
+import ErrorBoundary from '../HOCs/ErrorBoundary';
 
 class ZiPCodeComponent extends React.Component {
   state = {
@@ -145,7 +146,9 @@ class ZiPCodeComponent extends React.Component {
 
     return (
       <Fragment>
-        <LangFlags />
+        <ErrorBoundary>
+          <LangFlags />
+        </ErrorBoundary>
         <div className="zipCodeCont">
           <div className="zipCodeCont_body">
             <div className="zipCodeCont_body_list">
