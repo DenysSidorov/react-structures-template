@@ -177,17 +177,15 @@ class ZiPCodeComponent extends React.Component {
                     </div>
                   ) : null}
 
-                  {zipCodeItems && zipCodeItems.length
-                    ? zipCodeItems.map(el => (
-                        <ZipCodeItem
-                          key={el['post code']}
-                          el={el}
-                          currentItem={currentItem}
-                          selectItem={this.selectItem}
-                          removeItem={this.removeItem}
-                        />
-                      ))
-                    : null}
+                  {zipCodeItems.map(el => (
+                    <ZipCodeItem
+                      key={el['post code']}
+                      el={el}
+                      currentItem={currentItem}
+                      selectItem={this.selectItem}
+                      removeItem={this.removeItem}
+                    />
+                  ))}
                 </div>
               ) : null}
             </div>
