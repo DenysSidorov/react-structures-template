@@ -16,7 +16,7 @@ class ZiPCodeComponent extends React.Component {
     searchValue: '',
     searchError: '',
     isFetching: false,
-    zipCodeItems: cities,
+    zipCodeItems: cities || [],
   };
 
   // input handler
