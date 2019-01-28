@@ -2,10 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function logErrorToMyService(err, inf) {
-  console.log('logErrorToMyService Err - ', err);
-  console.log('logErrorToMyService Inf - ', inf);
-  console.log(1, err.toString());
-  console.log(2, inf.componentStack);
+  console.log(err, inf);
 }
 
 class ErrorBoundary extends React.Component {
@@ -28,7 +25,7 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       // Вы можете отрисовать любой резервный UI
-      return <h1>Возникли ошибки.</h1>;
+      return <p>Возникли ошибки.</p>;
     }
     return this.props.children;
   }

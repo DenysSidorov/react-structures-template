@@ -26,23 +26,15 @@ class ErrorCapturer extends React.Component {
   }
 
   onClick = () => {
-    console.log(12);
     setTimeout(() => {
       this.setState({error: '12'}, () => {
         console.log('after');
       });
-    }, 6000);
-    // try {
-    // throw Error('lol');
-    // Выполните что-то, что выбросит ошибку
-    // } catch (error) {
-    // this.setState({error: Error('lolo')});
-    // }
+    }, 2000);
   };
 
   render() {
     const {error} = this.state;
-    console.log(error, 'errr');
     if (error.error.value) {
       return <h1>Ошибка перехвачена!.</h1>;
     }
