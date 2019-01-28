@@ -5,8 +5,8 @@ import App from './components/index';
 
 const container = document.getElementById('app');
 if (container) {
-  ReactDOM.render(<App />, container, (a1, a2) => {
-    console.log('Mounted', a1, a2);
+  ReactDOM.render(<App />, container, () => {
+    console.log('Application was mounted');
   });
 }
 
