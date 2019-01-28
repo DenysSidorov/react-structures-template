@@ -14,9 +14,10 @@ console.log(process.env.NODE_ENV, 'MODE IN REACT');
 
 /**
  * Plans:
- * - CSS in JS
+ * - CSS in JS (in resume)
+ * - React Router
  * - MobX
- * - CSS-GRIDS
- * - Tests: Mocha, Jasmine, Jest, Events
+ * - CSS-GRIDS (in resume)
+ * - Tests: Mocha, Jasmine, Jest, Events (in resume)
  * - TypeScript
  * */
