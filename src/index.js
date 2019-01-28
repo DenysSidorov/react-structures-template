@@ -14,9 +14,9 @@ console.log(process.env.NODE_ENV, 'MODE IN REACT');
 
 /**
  * Plans:
- * - MobX
  * - CSS in JS
- * - TypeScript
- * - Tests Mocha, Jasmine, Jest, Events
+ * - MobX
  * - CSS-GRIDS
+ * - Tests: Mocha, Jasmine, Jest, Events
+ * - TypeScript
  * */
