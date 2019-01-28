@@ -4,6 +4,13 @@ import PropTypes from 'prop-types';
 class ZipCodeItem extends React.Component {
   componentDidMount() {}
 
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.el._id !== this.props.el._id) {
+      return true;
+    }
+    return false;
+  }
+
   render() {
     const {el, currentItem, selectItem, removeItem} = this.props;
     console.log('rerender');
