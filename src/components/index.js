@@ -143,7 +143,6 @@ class ZiPCodeComponent extends React.Component {
 
   render() {
     const {zipCodeItems, currentItem} = this.state;
-
     return (
       <Fragment>
         <ErrorBoundary>
