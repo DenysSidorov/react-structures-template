@@ -14,9 +14,9 @@ console.log(process.env.NODE_ENV, 'MODE IN REACT');
 
 /**
  * Plans:
- * - CSS in JS (in resume)
- * - React Router
- * - MobX
+ * - CSS in JS (in resume) --- DONE!
+ * - React Router --- DONE!
+ * - MobX --- DONE!
  * - wallaby
  * - CSS-GRIDS (in resume)
  * - Tests: Mocha, Jasmine, Jest, Events (in resume)
