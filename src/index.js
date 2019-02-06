@@ -19,7 +19,6 @@ console.log(process.env.NODE_ENV, 'MODE IN REACT');
  * - MobX --- DONE!
  * - wallaby --- DONE!
  * - CSS-GRIDS (in resume) --- ???
- * - Tests: Mocha, Jasmine, Jest, Events (in resume)
- * - 1 part - (jest, enzyme): REACTJS, 2 part - (mocha, chai): NODEJS
+ * - Tests: 1 part - (jest, enzyme): REACTJS, 2 part - (mocha, chai): NODEJS
  * - TypeScript
  * */
