@@ -5,7 +5,10 @@ class ZipCodeItem extends React.Component {
   componentDidMount() {}
 
   shouldComponentUpdate(nextProps) {
-    if (nextProps.el._id !== this.props.el._id) {
+    if (
+      nextProps.el._id !== this.props.el._id ||
+      nextProps.currentItem._id !== this.props.currentItem._id
+    ) {
       return true;
     }
     return false;
