@@ -1,13 +1,21 @@
 // import 'babel-polyfill';
 import React from 'react';
+import {Provider} from 'react-redux';
 import ReactDOM from 'react-dom';
 import App from './components/index';
+import {store} from './state/config';
 
 const container = document.getElementById('app');
 if (container) {
-  ReactDOM.render(<App />, container, () => {
-    console.log('Application was mounted');
-  });
+  ReactDOM.render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    container,
+    () => {
+      console.log('Application was mounted');
+    },
+  );
 }
 
 console.log(process.env.NODE_ENV, 'MODE IN REACT');
