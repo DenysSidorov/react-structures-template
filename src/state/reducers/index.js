@@ -1,7 +1,9 @@
 import {combineReducers} from 'redux';
-import windowSizeReducer from './items';
+import itemReducer from './items';
+import windowSizeReducer from './sizeReducer';
 
 // config of reducers
 export default combineReducers({
+  itemReducer,
   windowSizeReducer,
 });
