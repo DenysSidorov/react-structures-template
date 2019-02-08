@@ -5,3 +5,4 @@ export const CHANGE_SEARCH_VALUE = 'zipCodes/CHANGE_SEARCH_VALUE';
 export const CHANGE_ERROR_VALUE = 'zipCodes/CHANGE_ERROR_VALUE';
 export const CHANGE_CODES_VALUES = 'zipCodes/CHANGE_CODES_VALUES';
 export const CHANGE_CURRENT_ITEM = 'zipCodes/CHANGE_CURRENT_ITEM';
+export const SET_INITIAL_STATE = 'zipCodes/SET_INITIAL_STATE';

@@ -1,11 +1,15 @@
+import axios from 'axios';
 import {
   CHANGE_FETCHING_STATE,
   CHANGE_SEARCH_VALUE,
   CHANGE_ERROR_VALUE,
   CHANGE_CODES_VALUES,
   CHANGE_CURRENT_ITEM,
+  SET_INITIAL_STATE,
 } from '../../action-variables/index';
 import cities from '../../../api/mocks/cities';
+
+import {generateUniqueId} from '../../../helpers/index';
 
 const initState = {
   currentItem: {},
@@ -27,6 +31,8 @@ export default (state = initState, action) => {
       return {...state, zipCodeItems: action.payload};
     case CHANGE_CURRENT_ITEM:
       return {...state, currentItem: action.payload};
+    case SET_INITIAL_STATE:
+      return {...state, currentItem: {}, searchValue: '', searchError: ''};
     default:
       return state;
   }
@@ -56,3 +62,65 @@ export const changeCurrentItem = currentItemObject => ({
   type: CHANGE_CURRENT_ITEM,
   payload: currentItemObject,
 });
+
+export const setInitialState = () => ({
+  type: SET_INITIAL_STATE,
+});
+
+export const getNewData = async () => {
+  const {isFetching, zipCodeItems, searchValue, currentItem} = this.props.itemReducer;
+  // prevent fetching new data if user are fetching data now
+  if (!isFetching) {
+    // this.setState({isFetching: true});
+    this.props.changeFetchingState(true);
+    try {
+      const result = await axios({
+        method: 'get',
+        url: `https://api.zippopotam.us/us/${searchValue}`,
+      });
+
+      // if application has correct response
+      if (result.status === 200) {
+        const isPostCodeExists = zipCodeItems.some(
+          el => el['post code'] === result.data['post code'],
+        );
+
+        let newData = [].concat([], zipCodeItems);
+        // create or change exists item
+        if (!isPostCodeExists) {
+          if (!currentItem._id) {
+            // create new item
+            newData = [].concat(zipCodeItems, {...result.data, _id: generateUniqueId()});
+          } else {
+            // update exists item
+            newData = zipCodeItems.map(el =>
+              el._id === currentItem._id ? {...result.data, _id: currentItem._id} : el,
+            );
+          }
+        }
+
+        // generate error text for user
+        let searchError = '';
+        if (isPostCodeExists) {
+          searchError = 'Post code already exists';
+        }
+
+        this.setState({
+          isFetching: false,
+          searchValue: '',
+          searchError,
+          zipCodeItems: newData,
+        });
+      } else {
+        this.setState({isFetching: false, searchError: 'Something wrong with connection!'});
+      }
+    } catch (er) {
+      console.log(er.response || er);
+      let searchError = '';
+      if (er.response && er.response.data && er.response.data['post code'] === undefined) {
+        searchError = "Post code wasn't found";
+      }
+      this.setState({isFetching: false, searchError});
+    }
+  }
+};

@@ -45,6 +45,8 @@ module.exports = {
     "no-use-before-define": OFF,
     "prefer-destructuring": OFF,
     "global-require": OFF,
-    "import/no-unresolved": OFF
+    "import/no-unresolved": OFF,
+    "react/prop-types": OFF,
+    "import/no-extraneous-dependencies": OFF
   }
 };
