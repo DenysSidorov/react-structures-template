@@ -6,7 +6,7 @@ import ZipCodeItem from './ZipCodeItem';
 import SearchArea from './SearchArea';
 import Preloader from './Preloader';
 import LangFlags from './LangFlags';
-import cities from '../api/mocks/cities';
+// import cities from '../api/mocks/cities';
 import '../styles/index.scss';
 import ErrorBoundary from '../HOCs/ErrorBoundary';
 import {
@@ -20,13 +20,13 @@ import {
 } from '../state/reducers/items/index';
 
 class ZiPCodeComponent extends React.Component {
-  state = {
-    currentItem: {},
-    searchValue: '',
-    searchError: '',
-    isFetching: false,
-    zipCodeItems: cities || [],
-  };
+  // state = {
+  //   currentItem: {},
+  //   searchValue: '',
+  //   searchError: '',
+  //   isFetching: false,
+  //   zipCodeItems: cities || [],
+  // };
 
   // input handler
   handleChangeSearch = event => {
@@ -173,7 +173,7 @@ class ZiPCodeComponent extends React.Component {
       searchError,
       searchValue,
       isFetching,
-    } = this.props.itemReducer;
+    } = this.props.itemReducer; // this.state
     return (
       <Fragment>
         <ErrorBoundary>
@@ -239,7 +239,7 @@ const mapDispatchToProps = dispatch =>
       changeZIPCodes: codesArray => changeZIPCodes(codesArray),
       changeCurrentItem: currentItemObject => changeCurrentItem(currentItemObject),
       setInitialState: () => setInitialState(),
-      getNewData: () => getNewData(),
+      getNewData: () => getNewData(dispatch),
     },
     dispatch,
   );

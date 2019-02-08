@@ -7,6 +7,7 @@ import {
   CHANGE_CURRENT_ITEM,
   SET_INITIAL_STATE,
 } from '../../action-variables/index';
+
 import cities from '../../../api/mocks/cities';
 
 import {generateUniqueId} from '../../../helpers/index';
@@ -67,12 +68,15 @@ export const setInitialState = () => ({
   type: SET_INITIAL_STATE,
 });
 
-export const getNewData = async () => {
-  const {isFetching, zipCodeItems, searchValue, currentItem} = this.props.itemReducer;
+// we can have dispatch and getState with using redux-thunk
+// export const fetchSearchResult = (objParams) => async (dispatch, getState) => {
+
+export const getNewData = () => async (dispatch, getState) => {
+  const {isFetching, zipCodeItems, searchValue, currentItem} = getState().itemReducer;
   // prevent fetching new data if user are fetching data now
   if (!isFetching) {
     // this.setState({isFetching: true});
-    this.props.changeFetchingState(true);
+    dispatch(changeFetchingState(true));
     try {
       const result = await axios({
         method: 'get',
@@ -104,15 +108,20 @@ export const getNewData = async () => {
         if (isPostCodeExists) {
           searchError = 'Post code already exists';
         }
-
-        this.setState({
-          isFetching: false,
-          searchValue: '',
-          searchError,
-          zipCodeItems: newData,
-        });
+        dispatch(changeFetchingState(false));
+        dispatch(changeErrorValue(searchError));
+        dispatch(changeSearchValue(''));
+        dispatch(changeZIPCodes(newData));
+        // this.setState({
+        //   isFetching: false,
+        // searchValue: '',
+        // searchError: searchError,
+        // zipCodeItems: newData,
+        // });
       } else {
-        this.setState({isFetching: false, searchError: 'Something wrong with connection!'});
+        // this.setState({isFetching: false, searchError: 'Something wrong with connection!'});
+        dispatch(changeFetchingState(false));
+        dispatch(changeErrorValue('Something wrong with connection!'));
       }
     } catch (er) {
       console.log(er.response || er);
@@ -120,7 +129,9 @@ export const getNewData = async () => {
       if (er.response && er.response.data && er.response.data['post code'] === undefined) {
         searchError = "Post code wasn't found";
       }
-      this.setState({isFetching: false, searchError});
+      dispatch(changeFetchingState(false));
+      dispatch(changeErrorValue(searchError));
+      // this.setState({isFetching: false, searchError});
     }
   }
 };

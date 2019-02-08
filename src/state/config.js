@@ -1,6 +1,6 @@
 import {createStore, applyMiddleware, compose} from 'redux';
 
-// import thunk from 'redux-thunk';
+import thunk from 'redux-thunk';
 
 import rootReducer from './reducers/index';
 
@@ -8,9 +8,7 @@ import rootReducer from './reducers/index';
 const initialState = {};
 const enhancers = [];
 
-const middleware = [
-  /* thunk */
-];
+const middleware = [thunk];
 
 // setup in webpack or launch-server
 // if (process.env.NODE_ENV === 'development') {
