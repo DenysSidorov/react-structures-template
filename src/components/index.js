@@ -72,7 +72,8 @@ class ZiPCodeComponent extends React.Component {
 
   selectItem = replyItem => {
     // check item, selected or not
-    const isAlreadySelected = this.state.currentItem['post code'] === replyItem['post code'];
+    const isAlreadySelected =
+      this.props.itemReducer.currentItem['post code'] === replyItem['post code'];
 
     if (isAlreadySelected) {
       this.props.setInitialState();

@@ -6,6 +6,8 @@ import {
   CHANGE_CODES_VALUES,
   CHANGE_CURRENT_ITEM,
   SET_INITIAL_STATE,
+  ITEM_FETCHED_SUCCESS,
+  ITEM_FETCHED_ERROR,
 } from '../../action-variables/index';
 
 import cities from '../../../api/mocks/cities';
@@ -34,6 +36,20 @@ export default (state = initState, action) => {
       return {...state, currentItem: action.payload};
     case SET_INITIAL_STATE:
       return {...state, currentItem: {}, searchValue: '', searchError: ''};
+    case ITEM_FETCHED_ERROR:
+      return {
+        ...state,
+        isFetching: action.payload.isFetching,
+        searchError: action.payload.searchError,
+      };
+    case ITEM_FETCHED_SUCCESS:
+      return {
+        ...state,
+        isFetching: action.payload.isFetching,
+        zipCodeItems: action.payload.zipCodeItems,
+        searchValue: action.payload.searchValue,
+        searchError: action.payload.searchError,
+      };
     default:
       return state;
   }
@@ -66,6 +82,24 @@ export const changeCurrentItem = currentItemObject => ({
 
 export const setInitialState = () => ({
   type: SET_INITIAL_STATE,
+});
+
+export const itemsFetchedSuccess = (isFetching, searchError, zipCodeItems) => ({
+  type: ITEM_FETCHED_SUCCESS,
+  payload: {
+    isFetching,
+    searchError,
+    searchValue: '',
+    zipCodeItems,
+  },
+});
+
+export const itemsFetchedError = (isFetching, searchError) => ({
+  type: ITEM_FETCHED_ERROR,
+  payload: {
+    isFetching,
+    searchError,
+  },
 });
 
 // we can have dispatch and getState with using redux-thunk
@@ -108,10 +142,7 @@ export const getNewData = () => async (dispatch, getState) => {
         if (isPostCodeExists) {
           searchError = 'Post code already exists';
         }
-        dispatch(changeFetchingState(false));
-        dispatch(changeErrorValue(searchError));
-        dispatch(changeSearchValue(''));
-        dispatch(changeZIPCodes(newData));
+        dispatch(itemsFetchedSuccess(false, searchError, newData));
         // this.setState({
         //   isFetching: false,
         // searchValue: '',
@@ -120,8 +151,9 @@ export const getNewData = () => async (dispatch, getState) => {
         // });
       } else {
         // this.setState({isFetching: false, searchError: 'Something wrong with connection!'});
-        dispatch(changeFetchingState(false));
-        dispatch(changeErrorValue('Something wrong with connection!'));
+        dispatch(itemsFetchedError(false, 'Something wrong with connection!'));
+        // dispatch(changeFetchingState(false));
+        // dispatch(changeErrorValue('Something wrong with connection!'));
       }
     } catch (er) {
       console.log(er.response || er);
@@ -129,8 +161,9 @@ export const getNewData = () => async (dispatch, getState) => {
       if (er.response && er.response.data && er.response.data['post code'] === undefined) {
         searchError = "Post code wasn't found";
       }
-      dispatch(changeFetchingState(false));
-      dispatch(changeErrorValue(searchError));
+      dispatch(itemsFetchedError(false, searchError));
+      // dispatch(changeFetchingState(false));
+      // dispatch(changeErrorValue(searchError));
       // this.setState({isFetching: false, searchError});
     }
   }
