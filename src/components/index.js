@@ -226,7 +226,7 @@ class ZiPCodeComponent extends React.Component {
   }
 }
 
-export default ZiPCodeComponent;
+// export default ZiPCodeComponent;
 
 const mapStateToProps = state => ({
   itemReducer: state.itemReducer,
