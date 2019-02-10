@@ -103,8 +103,6 @@ export const itemsFetchedError = (isFetching, searchError) => ({
 });
 
 // we can have dispatch and getState with using redux-thunk
-// export const fetchSearchResult = (objParams) => async (dispatch, getState) => {
-
 export const getNewData = () => async (dispatch, getState) => {
   const {isFetching, zipCodeItems, searchValue, currentItem} = getState().itemReducer;
   // prevent fetching new data if user are fetching data now
@@ -143,17 +141,8 @@ export const getNewData = () => async (dispatch, getState) => {
           searchError = 'Post code already exists';
         }
         dispatch(itemsFetchedSuccess(false, searchError, newData));
-        // this.setState({
-        //   isFetching: false,
-        // searchValue: '',
-        // searchError: searchError,
-        // zipCodeItems: newData,
-        // });
       } else {
-        // this.setState({isFetching: false, searchError: 'Something wrong with connection!'});
         dispatch(itemsFetchedError(false, 'Something wrong with connection!'));
-        // dispatch(changeFetchingState(false));
-        // dispatch(changeErrorValue('Something wrong with connection!'));
       }
     } catch (er) {
       console.log(er.response || er);
@@ -162,9 +151,6 @@ export const getNewData = () => async (dispatch, getState) => {
         searchError = "Post code wasn't found";
       }
       dispatch(itemsFetchedError(false, searchError));
-      // dispatch(changeFetchingState(false));
-      // dispatch(changeErrorValue(searchError));
-      // this.setState({isFetching: false, searchError});
     }
   }
 };
